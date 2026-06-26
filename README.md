@@ -1,42 +1,54 @@
-# Founder Mode — Coming Soon
+# Founder Mode — Landing Page
 
-A single-file, dependency-free coming-soon landing page for **Founder Mode**, an
-AI-powered personal chief of staff for busy founders and CEOs.
+The landing page for **Founder Mode** — a white-glove service that hand-builds a
+personal AI chief of staff for a few founders at a time. The page is an
+application/access-request flow, not a mass waitlist.
 
-Everything (HTML, CSS, JS) lives in [`index.html`](index.html). No build step, no
-frameworks.
+Everything (HTML, CSS, JS) lives in a single file: [`index.html`](index.html).
+No build step, no frameworks, no dependencies.
+
+## Design
+
+- **Palette:** Obsidian & Champagne — near-black canvas with a champagne-gold
+  accent (`#c9a45c`), for a private, members-only feel.
+- **Type:** Fraunces serif for display headlines, Inter for UI/body.
+- Animated gold hero glow, gold hairlines, generous negative space.
+- Fully mobile responsive.
+
+## Content structure
+
+- **Hero** — wordmark, "Onboarding 10 founders this quarter" badge, serif
+  headline, and the application form.
+- **Application form** — name, work email, company, and "What's eating your time
+  right now?" Submissions are qualified leads, not anonymous emails.
+- **How it works** — 3 steps: we learn how you work → we build your agent → it
+  runs your mornings.
+- **Closing CTA** — scarcity ("we only take a few founders at a time") + repeat
+  Request Access button.
 
 ## Local preview
 
-Just open the file in a browser:
-
 ```bash
 open index.html
+# or serve it:
+python3 -m http.server 8000   # then visit http://localhost:8000
 ```
 
-Or serve it locally:
+## Email capture (Formspree)
 
-```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
-```
+The form posts to [Formspree](https://formspree.io), endpoint
+`https://formspree.io/f/mbdvgvrv` (set in the `<form action>` in
+[`index.html`](index.html)).
 
-## Configure the email form (Formspree)
+- Submissions land in the Formspree dashboard **and** are emailed to you.
+- **First-use activation:** Formspree emails a one-time confirmation the first
+  time the form is submitted — click that link once to activate, or early
+  submissions won't come through. Submit the form yourself once to trigger it.
+- The free tier covers **50 submissions/month**, ample for an application flow.
+- The page submits via `fetch` for inline success/error feedback and falls back
+  to a standard POST if JavaScript is disabled.
 
-The email capture form posts to [Formspree](https://formspree.io).
-
-1. Create a free account and a new form at <https://formspree.io>.
-2. Copy your form endpoint (looks like `https://formspree.io/f/abcdwxyz`).
-3. In `index.html`, find the `<form>` tag (marked with a `FORMSPREE SETUP`
-   comment) and replace the placeholder `YOUR_FORM_ID` in the `action` attribute:
-
-   ```html
-   action="https://formspree.io/f/abcdwxyz"
-   ```
-
-That's it. Submissions appear in your Formspree dashboard. The page submits via
-`fetch` for inline success/error feedback and falls back to a standard POST if
-JavaScript is disabled.
+To point at a different form, replace the `action` URL in the `<form>` tag.
 
 ## Deploy to Cloudflare Pages
 
@@ -44,7 +56,7 @@ This site is static, so deployment is just connecting the repo.
 
 ### Option A — Git integration (recommended)
 
-1. Push this repo to GitHub (see below) as `founder-mode-web`.
+1. The repo is already on GitHub as `founder-mode-web`.
 2. In the [Cloudflare dashboard](https://dash.cloudflare.com), go to
    **Workers & Pages → Create → Pages → Connect to Git**.
 3. Select the `founder-mode-web` repository.
@@ -71,17 +83,6 @@ Every push to the default branch redeploys automatically.
 ```bash
 npm install -g wrangler
 wrangler pages deploy . --project-name founder-mode-web
-```
-
-## Push to GitHub
-
-```bash
-git init
-git add .
-git commit -m "Founder Mode coming-soon landing page"
-git branch -M main
-git remote add origin git@github.com:<your-username>/founder-mode-web.git
-git push -u origin main
 ```
 
 ## License
