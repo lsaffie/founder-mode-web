@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Founder Mode Works</title>
+  <meta name="description" content="How the Founder Mode briefing agent works: what it produces each morning, how it is tailored, and how your data is handled." />
+  <!-- Unlisted: shared by link only. Not in sitemap.xml, not linked from the site. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0a0a0c" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --bg-soft: #141410;
+      --text: #f4f1ea;
+      --text-dim: #c2bcaf;      /* brighter than the homepage, for readability */
+      --text-faint: #8f8a7f;
+      --accent: #c9a45c;
+      --accent-hi: #e6c98a;
+      --border: rgba(201, 164, 92, 0.18);
+      --rule: rgba(244, 241, 234, 0.09);
+
+      /* The sample email renders on paper, like a real inbox */
+      --paper: #faf8f3;
+      --paper-rule: #e8e3d7;
+      --ink: #1d1c19;
+      --ink-dim: #55524a;
+      --ink-faint: #8a867c;
+      --deadline: #9b2c1f;
+
+      --max: 1120px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 112.5%; } /* 18px base */
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    b, strong { font-weight: 600; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ---------- Top bar ---------- */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(10, 10, 12, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .topbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .wordmark {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .wordmark .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .topnav { display: flex; gap: 22px; }
+    .topnav a {
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      transition: color 0.2s;
+    }
+    .topnav a:hover { color: var(--accent-hi); }
+
+    /* ---------- Type ---------- */
+    .eyebrow {
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    h1, h2 {
+      font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      color: var(--text);
+    }
+    h1 { font-size: clamp(2.3rem, 5vw, 3.5rem); line-height: 1.08; max-width: 880px; }
+    h2 { font-size: clamp(1.7rem, 3.4vw, 2.35rem); line-height: 1.15; margin-bottom: 16px; }
+    h3 { font-size: 1.02rem; font-weight: 600; letter-spacing: -0.005em; margin-bottom: 6px; }
+
+    .lede { font-size: 1.15rem; color: var(--text-dim); max-width: 700px; }
+    .section-intro { max-width: 720px; margin-bottom: 52px; }
+    .section-intro p { color: var(--text-dim); font-size: 1.05rem; }
+
+    section { padding: 104px 0; border-top: 1px solid var(--rule); scroll-margin-top: 60px; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 96px 0 88px; border-top: none; }
+    .hero h1 { margin-bottom: 26px; }
+    .hero .lede { margin-bottom: 64px; }
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+    .pillar { padding: 26px 28px 0 0; }
+    .pillar + .pillar { padding-left: 28px; border-left: 1px solid var(--rule); }
+    .pillar p { color: var(--text-dim); font-size: 0.95rem; }
+
+    /* ---------- Sample briefing ---------- */
+    .sample-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 18px;
+    }
+
+    .brief {
+      display: grid;
+      grid-template-columns: minmax(0, 700px) minmax(210px, 290px);
+      grid-auto-flow: row dense;
+      column-gap: 52px;
+      justify-content: start;
+    }
+    .b-cell {
+      grid-column: 1;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 24px 40px;
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+    .b-note {
+      grid-column: 2;
+      align-self: start;
+      margin-top: 24px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem;
+      color: var(--text-dim);
+      line-height: 1.55;
+    }
+    .b-note strong {
+      display: block;
+      color: var(--accent-hi);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .b-spacer { grid-column: 2; }
+
+    .b-head {
+      border-radius: 14px 14px 0 0;
+      padding-top: 26px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--paper-rule);
+      font-size: 0.82rem;
+      color: var(--ink-dim);
+    }
+    .b-head .row { display: flex; gap: 12px; }
+    .b-head .row span:first-child { width: 58px; color: var(--ink-faint); flex-shrink: 0; }
+    .b-head .subject { color: var(--ink); font-weight: 600; }
+    .b-last { border-radius: 0 0 14px 14px; padding-bottom: 36px; }
+
+    .b-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin: 8px 0 12px;
+      color: var(--ink);
+    }
+    .b-open { font-size: 1rem; color: var(--ink); }
+
+    .b-h {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--paper-rule);
+    }
+
+    .b-list { list-style: none; }
+    .b-list li { position: relative; padding-left: 18px; margin-bottom: 9px; }
+    .b-list li::before {
+      content: "";
+      position: absolute; left: 2px; top: 0.62em;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--ink-faint);
+    }
+    .b-list li.urgent::before { background: var(--deadline); }
+    .b-list li:last-child { margin-bottom: 0; }
+
+    .due {
+      display: inline-block;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--deadline);
+      border: 1px solid rgba(155, 44, 31, 0.35);
+      border-radius: 4px;
+      padding: 1px 6px;
+      margin-right: 6px;
+      vertical-align: 1px;
+    }
+    .src {
+      font-size: 0.7rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .src::before { content: "· "; }
+    .routine { color: var(--ink-dim); }
+
+    .sched { display: grid; grid-template-columns: 76px 1fr; row-gap: 7px; }
+    .sched .t { font-weight: 600; font-variant-numeric: tabular-nums; }
+    .flag {
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: #f3eee2;
+      border-left: 3px solid #b8893a;
+      font-size: 0.88rem;
+      color: var(--ink-dim);
+    }
+
+    .prep + .prep { margin-top: 20px; padding-top: 18px; border-top: 1px dashed var(--paper-rule); }
+    .prep-title { font-weight: 600; color: var(--ink); }
+    .prep-who { font-size: 0.86rem; color: var(--ink-dim); margin-bottom: 8px; }
+    .prep dl { display: grid; grid-template-columns: 84px 1fr; row-gap: 6px; column-gap: 12px; }
+    .prep dt {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-faint); padding-top: 3px;
+    }
+    .prep dd { color: var(--ink); }
+    .prep dd.angle { font-style: italic; }
+
+    .ahead + .ahead { margin-top: 14px; }
+    .ahead .day { font-weight: 600; }
+    .ahead .needs { color: var(--ink-dim); }
+    .ahead-close { margin-top: 12px; color: var(--ink-dim); font-size: 0.9rem; }
+
+    .b-divider {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+    .b-divider::before, .b-divider::after { content: ""; flex: 1; height: 1px; background: var(--paper-rule); }
+
+    .week {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1042px;
+    }
+    .week div { border-top: 1px solid var(--border); padding-top: 16px; }
+    .week p { color: var(--text-dim); font-size: 0.92rem; }
+
+    /* ---------- Two column blocks ---------- */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .items { list-style: none; }
+    .items li { padding: 18px 0; border-top: 1px solid var(--rule); }
+    .items li:first-child { border-top: none; padding-top: 0; }
+    .items p { color: var(--text-dim); font-size: 0.95rem; }
+    .items .opt { color: var(--text-faint); font-size: 0.82rem; }
+
+    /* Paper cards (draft, thread) */
+    .paper {
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 14px;
+      overflow: hidden;
+      font-size: 0.94rem;
+    }
+    .paper-head {
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--paper-rule);
+      font-size: 0.82rem;
+      color: var(--ink-dim);
+    }
+    .paper-head .row { display: flex; gap: 12px; }
+    .paper-head .row span:first-child { width: 58px; color: var(--ink-faint); flex-shrink: 0; }
+    .paper-body { padding: 24px 28px; }
+    .paper-body p + p { margin-top: 14px; }
+    .paper-foot {
+      padding: 12px 28px;
+      background: #f1ece0;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+
+    .msg { padding: 22px 28px; }
+    .msg + .msg { border-top: 1px solid var(--paper-rule); }
+    .msg-who { font-size: 0.78rem; color: var(--ink-faint); margin-bottom: 6px; }
+    .msg-who b { color: var(--ink); }
+    .msg.agent { background: #f4f0e6; }
+
+    .kinds {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .kinds div { border-top: 1px solid var(--border); padding-top: 16px; }
+    .kinds .ex { font-family: 'Fraunces', Georgia, serif; font-style: italic; color: var(--text); margin-bottom: 8px; }
+    .kinds p { color: var(--text-dim); font-size: 0.9rem; }
+    .fineprint { margin-top: 36px; color: var(--text-faint); font-size: 0.88rem; max-width: 760px; }
+
+    /* ---------- Settings grid ---------- */
+    .settings {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 64px;
+    }
+    .setting {
+      padding: 22px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .setting p { color: var(--text-dim); font-size: 0.95rem; }
+    .setting .eg { color: var(--text-faint); font-size: 0.86rem; margin-top: 6px; }
+
+    /* ---------- Integrations ---------- */
+    .tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .tier {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 34px 34px 30px;
+      background: var(--bg-soft);
+    }
+    .tier.muted { background: transparent; border-color: var(--rule); }
+    .tier-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+    }
+    .tier.muted .tier-label { color: var(--text-faint); }
+    .tier ul { list-style: none; }
+    .tier li { padding: 13px 0; border-top: 1px solid var(--rule); }
+    .tier li:first-child { border-top: none; padding-top: 0; }
+    .tier li span { display: block; color: var(--text-dim); font-size: 0.9rem; }
+    .tier .note { margin-top: 18px; color: var(--text-faint); font-size: 0.84rem; }
+
+    /* ---------- Trust steps ---------- */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      counter-reset: step;
+    }
+    .step {
+      padding: 30px 30px 30px 0;
+      border-top: 2px solid var(--rule);
+      position: relative;
+    }
+    .step + .step { padding-left: 30px; }
+    .step:first-child { border-top-color: var(--accent); }
+    .step-num {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .step p { color: var(--text-dim); font-size: 0.95rem; }
+    .steps-note { margin-top: 20px; color: var(--text); font-size: 1.02rem; max-width: 760px; }
+
+    /* ---------- Data Q&A ---------- */
+    .qa { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 64px; }
+    .qa div { padding: 24px 0; border-top: 1px solid var(--rule); }
+    .qa h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 1.2rem; margin-bottom: 8px; }
+    .qa p { color: var(--text-dim); font-size: 0.95rem; }
+    .qa p + p { margin-top: 8px; }
+
+    .notice {
+      margin-top: 40px;
+      padding: 26px 30px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--bg-soft);
+      max-width: 880px;
+    }
+    .notice h3 { color: var(--accent-hi); margin-bottom: 8px; }
+    .notice p { color: var(--text-dim); font-size: 0.95rem; }
+    .notice p + p { margin-top: 8px; }
+
+    /* ---------- Engagement timeline ---------- */
+    .timeline { list-style: none; max-width: 860px; }
+    .timeline li {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      padding: 24px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .timeline .when {
+      font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); padding-top: 3px;
+    }
+    .timeline p { color: var(--text-dim); font-size: 0.95rem; }
+
+    /* ---------- Included ---------- */
+    .included .tiers li { padding: 11px 0; }
+
+    footer { border-top: 1px solid var(--rule); padding: 36px 0; }
+    footer p { font-size: 0.82rem; color: var(--text-faint); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1000px) {
+      .topnav { display: none; }
+      .brief { grid-template-columns: minmax(0, 1fr); }
+      .b-cell, .b-note, .b-spacer { grid-column: 1; }
+      .b-spacer { display: none; }
+      .b-note {
+        margin-top: 0;
+        border-top: none;
+        background: var(--paper);
+        color: var(--ink-dim);
+        padding: 0 40px 22px;
+      }
+      .b-note strong { color: #8a6a2c; }
+      .b-note > div { border-left: 3px solid var(--accent); padding-left: 14px; }
+      .b-note.b-last-note { border-radius: 0 0 14px 14px; }
+      .b-last { border-radius: 0; padding-bottom: 20px; }
+      .kinds { grid-template-columns: repeat(2, 1fr); }
+      .week { grid-template-columns: 1fr; gap: 0; }
+      .week div { padding-bottom: 16px; }
+    }
+
+    @media (max-width: 760px) {
+      html { font-size: 106.25%; } /* 17px */
+      .container { padding: 0 20px; }
+      section { padding: 72px 0; }
+      .hero { padding: 64px 0 56px; }
+      .pillars, .split, .settings, .tiers, .steps, .qa { grid-template-columns: 1fr; }
+      .pillar, .pillar + .pillar { padding: 20px 0; border-left: none; border-top: 1px solid var(--rule); }
+      .pillar:first-child { border-top: none; }
+      .split { gap: 40px; }
+      .step, .step + .step { padding: 24px 0; }
+      .b-cell, .b-note { padding-left: 22px; padding-right: 22px; }
+      .prep dl { grid-template-columns: 1fr; row-gap: 2px; }
+      .prep dd { margin-bottom: 8px; }
+      .sched { grid-template-columns: 68px 1fr; }
+      .kinds { grid-template-columns: 1fr; }
+      .timeline li { grid-template-columns: 1fr; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container">
+      <a href="/" class="wordmark"><span class="dot"></span>Founder Mode</a>
+      <nav class="topnav" aria-label="Sections">
+        <a href="#briefing">Briefing</a>
+        <a href="#overnight">Overnight</a>
+        <a href="#replies">Replies</a>
+        <a href="#tailored">Tailored</a>
+        <a href="#tools">Tools</a>
+        <a href="#control">Control</a>
+        <a href="#data">Data</a>
+        <a href="#service">Service</a>
+        <a href="#included">Included</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ Overview ============ -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">How it works</div>
+        <h1>An AI agent for your inbox and calendar, built around how you work.</h1>
+        <p class="lede">Every morning it reads your email and calendar, does the work it can, and gives you a short briefing with the rest. We build it with you, tune it to your week, and review it with you every month.</p>
+
+        <div class="pillars">
+          <div class="pillar">
+            <h3>No new software</h3>
+            <p>It works inside the email and calendar you already use. The briefing arrives as an email.</p>
+          </div>
+          <div class="pillar">
+            <h3>Built with you</h3>
+            <p>Configured to your days, your priorities, your companies and your voice.</p>
+          </div>
+          <div class="pillar">
+            <h3>You stay in control</h3>
+            <p>You decide what it may read, what it may draft and what it may change.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 01 The briefing ============ -->
+    <section id="briefing">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">01 &nbsp;The briefing</div>
+          <h2>What arrives each morning</h2>
+          <p>Written to be read in three minutes, on a phone. It leads with what is already done, then gives you only what needs you.</p>
+        </div>
+
+        <span class="sample-label">Sample briefing &middot; people and companies are fictional</span>
+
+        <div class="brief">
+
+          <!-- Email header -->
+          <div class="b-cell b-head">
+            <div class="row"><span>From</span><span>Founder Mode</span></div>
+            <div class="row"><span>To</span><span>Robert Halvorsen</span></div>
+            <div class="row"><span>Subject</span><span class="subject">Founder Mode &mdash; Tuesday, October 6</span></div>
+          </div>
+          <div class="b-spacer"></div>
+
+          <!-- Opening line -->
+          <div class="b-note"><div>
+            <strong>The opening line</strong>
+            What it has already done for you, then the one thing only you can do.
+          </div></div>
+          <div class="b-cell">
+            <div class="b-title">Good morning, Robert.</div>
+            <p class="b-open">Four replies drafted while you slept &mdash; <b>Diane Park</b>, <b>Priya Raman</b>, <b>Marcus Chen</b> and <b>Jenna Morales</b> &mdash; plus a 90-minute hold on Wednesday and 3 tasks updated. The one thing only you can do: approve <b>Sarah Lindqvist&rsquo;s</b> revised offer before it expires at <b>5:00 pm</b>.</p>
+          </div>
+
+          <!-- Today -->
+          <div class="b-note"><div>
+            <strong>Today</strong>
+            Three actions at most. Ranked by who is waiting on you, what gets more costly with time, and what only you can do.
+          </div></div>
+          <div class="b-cell">
+            <div class="b-h">Today</div>
+            <ul class="b-list">
+              <li class="urgent"><span class="due">Due 5:00 pm</span>Approve the revised offer for <b>Sarah Lindqvist</b>, VP Sales. She holds a competing offer that expires today. Your approval to Jenna is drafted. <span class="src">Email</span></li>
+              <li>Send <b>Diane Park</b> the final Q3 bookings before <b>Thursday&rsquo;s</b> board pre-read. She is building the deck around them. Drafted with Finance&rsquo;s figures. <span class="src">Email</span></li>
+              <li>Give <b>Marcus Chen</b> a decision on the Kestrel pilot extension by <b>Thursday</b>. His engineering team is on hold until then. <span class="src">Email</span></li>
+              <li class="routine">Weekly routine: send the Tuesday note to the leadership team.</li>
+            </ul>
+          </div>
+
+          <!-- Schedule -->
+          <div class="b-note"><div>
+            <strong>Schedule</strong>
+            Your day in order, with the problems flagged: no agenda, no travel time, double bookings.
+          </div></div>
+          <div class="b-cell">
+            <div class="b-h">Schedule</div>
+            <div class="sched">
+              <span class="t">9:00</span><span>Leadership stand-up</span>
+              <span class="t">11:30</span><span>Brightwater Health &mdash; renewal review <span class="src">Calendar</span></span>
+              <span class="t">1:00</span><span>Lunch with Tom Whitfield, Alder Ridge Capital <span class="src">Calendar</span></span>
+              <span class="t">4:00</span><span>Product roadmap review</span>
+            </div>
+            <div class="flag">The Brightwater invite has no agenda; your draft to Priya asks for one. The call ends at 12:30, which leaves 30 minutes to get to lunch.</div>
+          </div>
+
+          <!-- Meeting prep -->
+          <div class="b-note"><div>
+            <strong>Meeting preparation</strong>
+            It researches outside people and companies, reads your last exchange with them, and finds an angle: the question you would not otherwise have asked.
+          </div></div>
+          <div class="b-cell">
+            <div class="b-h">Meeting preparation</div>
+
+            <div class="prep">
+              <div class="prep-title">11:30 &nbsp;Brightwater Health &mdash; renewal review</div>
+              <div class="prep-who">Priya Raman, VP Operations &middot; Daniel Okafor, CFO (joined in August)</div>
+              <dl>
+                <dt>Context</dt>
+                <dd>Brightwater announced a $40M Series C on September 22 to open three regional sites. Their seat usage is up 38% since March, per your account team. Priya asked about multi-year pricing on September 29 and has had no reply.</dd>
+                <dt>Objective</dt>
+                <dd>Move the renewal to a two-year term. Daniel now owns the budget, so frame the numbers for him.</dd>
+                <dt>Angle</dt>
+                <dd class="angle">Ask Daniel which of the three new sites opens first. It turns a renewal into an expansion plan, and a two-year term follows from it.</dd>
+              </dl>
+            </div>
+
+            <div class="prep">
+              <div class="prep-title">1:00 &nbsp;Lunch &mdash; Tom Whitfield, Alder Ridge Capital</div>
+              <div class="prep-who">Tom Whitfield, Partner</div>
+              <dl>
+                <dt>Context</dt>
+                <dd>Alder Ridge closed a $350M growth fund on September 30; the announcement names industrial software as a focus. Tom&rsquo;s last note, in June: &ldquo;Let&rsquo;s reconnect once you have a view of next year.&rdquo;</dd>
+                <dt>Objective</dt>
+                <dd>Keep it a relationship conversation. Share nothing beyond public figures until the board has seen Q3.</dd>
+                <dt>Angle</dt>
+                <dd class="angle">Ask what Alder Ridge wants to see in a first investment from the new fund. You learn whether you fit without saying you are raising.</dd>
+              </dl>
+            </div>
+          </div>
+
+          <!-- Look ahead -->
+          <div class="b-note"><div>
+            <strong>Look ahead</strong>
+            What the rest of the week needs from you now, so nothing arrives too late to prepare for.
+          </div></div>
+          <div class="b-cell">
+            <div class="b-h">Look ahead</div>
+            <div class="ahead">
+              <div class="day">Thursday &mdash; 8:00 board pre-read with Diane Park, Chair</div>
+              <div class="needs">Needs from you: the Q3 figures above and a first view of the 2027 hiring plan. The new hold is Wednesday at 2:00.</div>
+            </div>
+            <div class="ahead">
+              <div class="day">Friday &mdash; 3:00 company all-hands</div>
+              <div class="needs">Needs from you: department slides are due Thursday at noon. Sales and Marketing have not sent theirs.</div>
+            </div>
+            <p class="ahead-close">Wednesday afternoon was your only open block this week. The hold now protects it.</p>
+          </div>
+
+          <!-- Signals -->
+          <div class="b-note"><div>
+            <strong>Signals</strong>
+            Risks and patterns no single email shows. On many days there are none, and the section is left out.
+          </div></div>
+          <div class="b-cell">
+            <div class="b-h">Signals</div>
+            <ul class="b-list">
+              <li>Kestrel&rsquo;s CTO, who sponsored the pilot, left the company last week. Thursday&rsquo;s extension decision may now sit with someone you have not met.</li>
+              <li>Brightwater and Norland both asked about single sign-on in the past ten days. It is not on the Q4 roadmap.</li>
+            </ul>
+          </div>
+
+          <!-- Inbox -->
+          <div class="b-note b-last-note"><div>
+            <strong>For reference</strong>
+            Worth knowing, nothing to do. Newsletters, receipts and notifications are left out. A quiet day produces a short briefing.
+          </div></div>
+          <div class="b-cell b-last">
+            <div class="b-divider" style="margin-bottom: 14px;">For reference</div>
+            <ul class="b-list">
+              <li>Legal returned the Norland contract with no changes to the liability terms. It is ready to sign. <span class="src">Email</span></li>
+              <li>The billing export fix shipped yesterday, which closes the issue Norland raised in September. <span class="src">GitHub</span></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="week">
+          <div>
+            <h3>First briefing of the week</h3>
+            <p>Covers everything since your last briefing, and names the one outcome the week has to produce.</p>
+          </div>
+          <div>
+            <h3>Midweek</h3>
+            <p>The shortest briefings of the week. It stops repeating items you have chosen to pass on.</p>
+          </div>
+          <div>
+            <h3>Last briefing of the week</h3>
+            <p>A short review: what moved, what did not, and what has to be true on Monday.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 Overnight ============ -->
+    <section id="overnight">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">02 &nbsp;Before you wake up</div>
+          <h2>It does the work before it reports it</h2>
+          <p>A list of what is waiting is just another inbox. The agent handles what it can, then tells you what is left.</p>
+        </div>
+
+        <div class="split">
+          <ul class="items">
+            <li>
+              <h3>Drafts your replies</h3>
+              <p>For people waiting on you, up to five each morning, written in your voice. They wait in your Drafts folder. Nothing is sent.</p>
+            </li>
+            <li>
+              <h3>Writes follow-ups</h3>
+              <p>When someone has not answered you and it matters, it drafts a short note that restarts the conversation.</p>
+            </li>
+            <li>
+              <h3>Researches your meetings</h3>
+              <p>Outside attendees and their companies: funding, news, role changes, and where your last conversation ended.</p>
+            </li>
+            <li>
+              <h3>Protects your calendar</h3>
+              <p>Adds meetings you agreed to by email, and holds time to prepare. It does not send invitations on your behalf.</p>
+              <p class="opt">If you allow it.</p>
+            </li>
+            <li>
+              <h3>Keeps your task list current</h3>
+              <p>In Notion, it moves, creates and closes tasks, and leaves a note on each change explaining why.</p>
+              <p class="opt">If you allow it.</p>
+            </li>
+          </ul>
+
+          <div class="paper" aria-label="Sample draft reply">
+            <div class="paper-head">
+              <div class="row"><span>To</span><span>Diane Park</span></div>
+              <div class="row"><span>Subject</span><span style="color: var(--ink); font-weight: 600;">Re: Q3 numbers for Thursday</span></div>
+            </div>
+            <div class="paper-body">
+              <p>Diane,</p>
+              <p>Q3 bookings closed at $4.2M, 9% ahead of plan. Karen&rsquo;s summary from Finance is below.</p>
+              <p>I will send the breakdown by segment before end of day Wednesday, ahead of the pre-read.</p>
+              <p>Robert</p>
+            </div>
+            <div class="paper-foot">Draft &middot; waiting for you to send</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 Replies ============ -->
+    <section id="replies">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">03 &nbsp;Talk back</div>
+          <h2>Reply to it as you would to a person</h2>
+          <p>Answer the briefing email. The agent reads your reply, acts on it, and responds. At the latest, the answer is in your next morning&rsquo;s briefing.</p>
+        </div>
+
+        <div class="split">
+          <div class="paper" aria-label="Sample reply thread">
+            <div class="msg">
+              <div class="msg-who"><b>Robert Halvorsen</b> &middot; 7:42 am</div>
+              <p>Extend the Kestrel pilot by 60 days and let Marcus know. Also, stop including industry newsletters. I read those on weekends.</p>
+            </div>
+            <div class="msg agent">
+              <div class="msg-who"><b>Founder Mode</b></div>
+              <p>A reply to Marcus confirming the 60-day extension is in your Drafts. Industry newsletters are out of your briefing from tomorrow.</p>
+            </div>
+          </div>
+
+          <ul class="items">
+            <li>
+              <h3>Only you can instruct it</h3>
+              <p>It acts only on text you wrote yourself. Forwarded and quoted messages are read as information, never as instructions.</p>
+            </li>
+            <li>
+              <h3>It remembers what you tell it</h3>
+              <p>Standing rules are kept in writing. You can see them and remove any of them.</p>
+            </li>
+            <li>
+              <h3>It does not chase you</h3>
+              <p>A briefing never waits for your answer. Silence is a fine reply.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="kinds">
+          <div>
+            <p class="ex">&ldquo;Diane prefers a call to email.&rdquo;</p>
+            <p><b style="color: var(--text);">Tell it something.</b> It remembers and uses it.</p>
+          </div>
+          <div>
+            <p class="ex">&ldquo;Research Kestrel&rsquo;s new CTO before Thursday.&rdquo;</p>
+            <p><b style="color: var(--text);">Ask for something.</b> It does the work and reports back.</p>
+          </div>
+          <div>
+            <p class="ex">&ldquo;Never draft replies to recruiters.&rdquo;</p>
+            <p><b style="color: var(--text);">Set a rule.</b> It applies from then on.</p>
+          </div>
+          <div>
+            <p class="ex">&ldquo;When did we last hear from Norland?&rdquo;</p>
+            <p><b style="color: var(--text);">Ask a question.</b> It answers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 Tailored ============ -->
+    <section id="tailored">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">04 &nbsp;Tailored to you</div>
+          <h2>Configured around how you work</h2>
+          <p>Every agent starts with a conversation about your week. These are the settings we tune together. Any of them can change when your work does.</p>
+        </div>
+
+        <div class="settings">
+          <div class="setting">
+            <h3>Which days</h3>
+            <p>Weekdays only, every day, or just the days you choose. The first briefing after a break covers everything you missed.</p>
+          </div>
+          <div class="setting">
+            <h3>What it covers</h3>
+            <p>Your whole day, or work only. Work-only leaves out family, health and household, but still flags a legal or financial deadline.</p>
+          </div>
+          <div class="setting">
+            <h3>Who you are</h3>
+            <p>Your role, your companies and your key relationships, so it describes every person and company correctly.</p>
+            <p class="eg">For example: which companies are yours, which are investments, which are clients.</p>
+          </div>
+          <div class="setting">
+            <h3>What it replies to</h3>
+            <p>Whether it drafts replies, and for whom. Up to five a day, in your voice, never sent.</p>
+            <p class="eg">For example: never draft for recruiters or vendors.</p>
+          </div>
+          <div class="setting">
+            <h3>Your calendar</h3>
+            <p>Read-only, or allowed to add meetings you have already agreed to. It adds an event only when the time is explicit.</p>
+          </div>
+          <div class="setting">
+            <h3>Weekly routines</h3>
+            <p>Recurring reminders on the days you pick, placed at the end of that day&rsquo;s actions.</p>
+            <p class="eg">For example: Monday, review the pipeline with Sales.</p>
+          </div>
+          <div class="setting">
+            <h3>Your task list</h3>
+            <p>In Notion, using your own statuses, priorities and categories. It explains every change it makes.</p>
+          </div>
+          <div class="setting">
+            <h3>Engineering activity</h3>
+            <p>The GitHub repositories to watch. It reports shipped work only when it changes something for you.</p>
+          </div>
+          <div class="setting">
+            <h3>Talking back</h3>
+            <p>Whether you can reply to the briefing and have the agent act on what you write.</p>
+          </div>
+          <div class="setting">
+            <h3>What to leave out</h3>
+            <p>Topics, senders and threads you never want to see again. Stated once, applied every day after.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 Tools ============ -->
+    <section id="tools">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">05 &nbsp;Your tools</div>
+          <h2>Works with the tools you already use</h2>
+          <p>The standard agent connects to your email and calendar, your task list and your code. When your work depends on other systems, we build those connections for you.</p>
+        </div>
+
+        <div class="tiers">
+          <div class="tier">
+            <div class="tier-label">Included</div>
+            <ul>
+              <li>Email and calendar<span>Google Workspace or Microsoft 365</span></li>
+              <li>Notion<span>Tasks and reference databases</span></li>
+              <li>GitHub<span>The repositories you choose</span></li>
+              <li>Web research<span>For your meetings and the companies in your inbox</span></li>
+            </ul>
+            <p class="note">Microsoft 365 accounts may need approval from your IT administrator.</p>
+          </div>
+          <div class="tier muted">
+            <div class="tier-label">Custom, quoted separately</div>
+            <ul>
+              <li>Other business systems<span>For example CRM, team chat, finance and reporting tools</span></li>
+              <li>New use cases<span>Agents for other parts of your work, beyond the morning briefing</span></li>
+            </ul>
+            <p class="note">We scope each one with you, and agree the cost before any work starts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 Control ============ -->
+    <section id="control">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">06 &nbsp;Control</div>
+          <h2>It earns access one step at a time</h2>
+          <p>The agent only has the abilities you have switched on. Anything you have not switched on, it cannot do.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Reads</h3>
+            <p>It reads your email and calendar and writes your briefing. It changes nothing.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Drafts</h3>
+            <p>It writes replies and follow-ups into your Drafts folder. You decide what gets sent.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Acts</h3>
+            <p>It adds calendar events and updates your task list, with a written reason for every change.</p>
+          </div>
+        </div>
+        <p class="steps-note">Every client starts at step one. Each step up is your decision, and you can step back at any time.</p>
+      </div>
+    </section>
+
+    <!-- ============ 07 Data ============ -->
+    <section id="data">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">07 &nbsp;Your data</div>
+          <h2>Your data, in plain terms</h2>
+          <p>You are giving an AI agent access to your inbox. Here is exactly what that means.</p>
+        </div>
+
+        <div class="qa">
+          <div>
+            <h3>Who connects to my account?</h3>
+            <p>You do. On a short call, you approve Founder Mode&rsquo;s access on your own screen. We never see or store your password.</p>
+            <p>You can remove access at any time from your Google or Microsoft account settings.</p>
+          </div>
+          <div>
+            <h3>How much access does it have?</h3>
+            <p>To draft replies and deliver your briefing, the agent needs full access to your mailbox. We say so plainly.</p>
+            <p>It never sends email as you. The only email it sends is your briefing, to you.</p>
+          </div>
+          <div>
+            <h3>Is my data used to train AI?</h3>
+            <p>No. The agent runs on Claude, through Anthropic&rsquo;s commercial service. Anthropic does not train its models on this data, and deletes it within 30 days.</p>
+          </div>
+          <div>
+            <h3>Who reads my briefings?</h3>
+            <p>You, and your Founder Mode lead, who reviews them to tune your agent. No one else.</p>
+          </div>
+          <div>
+            <h3>What does it keep?</h3>
+            <p>A short working memory: your last five briefings, what you have told it, and the follow-ups it is tracking. It is stored encrypted and never shared.</p>
+          </div>
+          <div>
+            <h3>What leaves my account?</h3>
+            <p>Email and calendar content goes to the AI model to write your briefing. For meeting research, the names of outside people and companies are searched on the public web.</p>
+          </div>
+        </div>
+
+        <div class="notice">
+          <h3>One screen to expect when you connect a Google account</h3>
+          <p>Google will show a notice that it has not verified the app. Verification is a process built for mass-market apps; Founder Mode is a private service for a small number of clients.</p>
+          <p>We walk you through that screen on the call.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 08 Service ============ -->
+    <section id="service">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">08 &nbsp;Working together</div>
+          <h2>A service, not software</h2>
+          <p>You do not set this up. We build it with you, check it before it reaches you, and keep it accurate as your work changes.</p>
+        </div>
+
+        <ol class="timeline">
+          <li>
+            <div class="when">Discovery</div>
+            <div>
+              <h3>A conversation about your week</h3>
+              <p>How your days run, who matters, what you want off your plate, and what the briefing should leave out.</p>
+            </div>
+          </li>
+          <li>
+            <div class="when">Connection</div>
+            <div>
+              <h3>Fifteen minutes, together</h3>
+              <p>You connect your accounts on a call. You approve every permission yourself.</p>
+            </div>
+          </li>
+          <li>
+            <div class="when">Private test runs</div>
+            <div>
+              <h3>Checked before it reaches you</h3>
+              <p>We run the agent on your real data with nothing sent, drafted or changed, and review the output before your first briefing.</p>
+            </div>
+          </li>
+          <li>
+            <div class="when">First weeks</div>
+            <div>
+              <h3>Tuned to your standard</h3>
+              <p>We adjust it from your replies and our own review until it reads the way you would want a chief of staff to write.</p>
+            </div>
+          </li>
+          <li>
+            <div class="when">Every month</div>
+            <div>
+              <h3>A review call</h3>
+              <p>What is working, what to change, and whether the agent is still doing what you need.</p>
+            </div>
+          </li>
+          <li>
+            <div class="when">As you grow</div>
+            <div>
+              <h3>New connections and new agents</h3>
+              <p>When you want it to reach another system or take on new work, we scope it with you as a custom project.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 09 Included ============ -->
+    <section id="included" class="included">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">09 &nbsp;What is included</div>
+          <h2>What you get</h2>
+        </div>
+
+        <div class="tiers">
+          <div class="tier">
+            <div class="tier-label">Included</div>
+            <ul>
+              <li>A daily briefing on the days you choose</li>
+              <li>Email and calendar, Notion and GitHub</li>
+              <li>Drafted replies and follow-ups</li>
+              <li>Meeting research and a look ahead at your week</li>
+              <li>Replying to the briefing to direct the agent</li>
+              <li>Onboarding, setup and tuning</li>
+              <li>A monthly review call</li>
+            </ul>
+          </div>
+          <div class="tier muted">
+            <div class="tier-label">Custom work, quoted separately</div>
+            <ul>
+              <li>Connections to other business systems</li>
+              <li>New agents and use cases beyond the briefing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Founder Mode</p>
+    </div>
+  </footer>
+
+</body>
+</html>
