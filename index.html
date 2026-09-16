@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Founder Mode — A Personal AI Assistant Agent, Built For You</title>
-  <meta name="description" content="Founder Mode hand-builds a personal AI chief of staff around how you actually run your company. White-glove, by hand, for a few founders at a time. By application only." />
-  <meta name="keywords" content="AI chief of staff, personal assistant agent, AI assistant for founders, executive assistant AI, founder productivity, white-glove AI agent" />
+  <title>Founder Mode — A Custom AI Chief of Staff, Built By Hand</title>
+  <meta name="description" content="Founder Mode builds a custom AI chief of staff around how you actually run your company. It reads your email and calendar overnight, drafts your replies, and hands you one short briefing each morning. By application only." />
+  <meta name="keywords" content="AI chief of staff, custom AI agent, personal assistant agent, AI assistant for founders, executive assistant AI, founder productivity, white-glove AI agent" />
   <meta name="author" content="Founder Mode" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#0a0a0c" />
   <link rel="canonical" href="https://founder-mode.com/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Founder Mode — A Personal AI Assistant Agent, Built For You" />
-  <meta property="og:description" content="Not another app to manage — a chief of staff we craft, by hand, around how you actually run your company. Onboarding 10 founders this quarter." />
+  <meta property="og:title" content="Founder Mode — A Custom AI Chief of Staff, Built By Hand" />
+  <meta property="og:description" content="Not another app to manage. It reads your email and calendar overnight, drafts your replies, and hands you one short briefing each morning. 10 founders a quarter." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://founder-mode.com/" />
   <meta property="og:site_name" content="Founder Mode" />
@@ -21,12 +21,12 @@
   <meta property="og:image" content="https://founder-mode.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Founder Mode — a personal AI assistant agent, built by hand for founders." />
+  <meta property="og:image:alt" content="Founder Mode — a custom AI chief of staff, built by hand for founders." />
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Founder Mode — A Personal AI Assistant Agent, Built For You" />
-  <meta name="twitter:description" content="A chief of staff we craft, by hand, around how you actually run your company. By application only." />
+  <meta name="twitter:title" content="Founder Mode — A Custom AI Chief of Staff, Built By Hand" />
+  <meta name="twitter:description" content="A custom AI chief of staff, built by hand around how you run your company. By application only." />
   <meta name="twitter:image" content="https://founder-mode.com/og-image.png" />
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -41,7 +41,7 @@
         "@id": "https://founder-mode.com/#organization",
         "name": "Founder Mode",
         "url": "https://founder-mode.com/",
-        "description": "Founder Mode hand-builds a personal AI chief of staff around how each founder actually runs their company.",
+        "description": "Founder Mode builds a custom AI chief of staff around how each founder actually runs their company.",
         "logo": "https://founder-mode.com/og-image.png"
       },
       {
@@ -54,10 +54,10 @@
       },
       {
         "@type": "Service",
-        "name": "Personal AI Assistant Agent for Founders",
+        "name": "Custom AI Chief of Staff for Founders",
         "serviceType": "AI chief of staff",
         "provider": { "@id": "https://founder-mode.com/#organization" },
-        "description": "A hand-crafted personal AI assistant agent wired into your calendar, email, and tools — tuned to how you run your company. Each agent is built by hand for a few founders at a time.",
+        "description": "A custom AI agent wired into your email and calendar. Overnight it drafts your replies, researches your meetings and prepares one short briefing. Each agent is built by hand for one founder.",
         "areaServed": "Worldwide",
         "audience": { "@type": "Audience", "audienceType": "Startup founders and CEOs" }
       },
@@ -69,15 +69,15 @@
             "name": "What is Founder Mode?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Founder Mode is a white-glove service that hand-builds a personal AI assistant agent — a chief of staff — around how you actually run your company, wired into your calendar, email, and tools."
+              "text": "Founder Mode is a service that builds a custom AI chief of staff around how you run your company. It works inside the email and calendar you already use, and delivers one short briefing each morning."
             }
           },
           {
             "@type": "Question",
-            "name": "How does Founder Mode work?",
+            "name": "What does the agent actually do?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "First we learn how you work through a focused onboarding. Then we hand-craft a personal assistant agent tuned to your priorities. Then it runs your mornings with a daily briefing that triages your inbox and ranks what matters."
+              "text": "Overnight it reads your email and calendar, drafts the replies you owe, writes follow-ups to people who have gone quiet, researches the outside people in your meetings, and then hands you one briefing with what is left. Drafts wait in your Drafts folder and are never sent for you."
             }
           },
           {
@@ -85,7 +85,15 @@
             "name": "Who is Founder Mode for?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Founder Mode is for startup founders and CEOs who want a personal AI chief of staff built by hand around their workflow. It is by application only and we take a few founders at a time."
+              "text": "Founders and CEOs whose day is decided by their inbox and calendar. It is by application only, and we take on 10 founders a quarter because each agent is built by hand."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens to my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You approve access yourself and we never see your password. The agent never sends email as you. Your email is never used to train AI. You can cut off access in one click, and when you leave we delete everything we hold."
             }
           }
         ]
@@ -104,17 +112,27 @@
       --bg: #0a0a0c;          /* near-black */
       --bg-soft: #14140f;     /* warm charcoal */
       --text: #f4f1ea;        /* warm off-white */
-      --text-dim: #9a958a;    /* taupe grey */
+      --text-dim: #c2bcaf;    /* readable taupe */
+      --text-faint: #8f8a7f;
       --accent: #c9a45c;      /* champagne gold */
       --accent-hi: #e6c98a;   /* light gold */
-      --border: rgba(201, 164, 92, 0.14);  /* gold hairline */
+      --border: rgba(201, 164, 92, 0.16);
+      --rule: rgba(244, 241, 234, 0.09);
       --shadow: rgba(201, 164, 92, 0.22);
+
+      /* The sample briefing renders on paper, like a real inbox */
+      --paper: #faf8f3;
+      --paper-rule: #e8e3d7;
+      --ink: #1d1c19;
+      --ink-dim: #55524a;
+      --ink-faint: #8a867c;
+      --deadline: #9b2c1f;
+
       --max: 1080px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 106.25%; } /* 17px */
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -126,167 +144,202 @@
     }
 
     a { color: inherit; text-decoration: none; }
+    b, strong { font-weight: 600; }
 
-    .container {
-      width: 100%;
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 24px;
+    .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    /* Custom emphasis, used sparingly — matches /how-it-works */
+    .accent { color: var(--accent-hi); }
+    h1 .accent { -webkit-text-fill-color: var(--accent-hi); }
+
+    /* ---------- Top bar ---------- */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(10, 10, 12, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
     }
-
-    /* ---------- Animated hero glow ---------- */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 0 60px;
-      overflow: hidden;
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .hero::before {
-      width: 540px;
-      height: 540px;
-      background: radial-gradient(circle, rgba(201, 164, 92, 0.45) 0%, transparent 70%);
-      opacity: 0.7;
-      top: -140px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: floatA 12s ease-in-out infinite;
-    }
-
-    .hero::after {
-      width: 440px;
-      height: 440px;
-      background: radial-gradient(circle, rgba(230, 201, 138, 0.3) 0%, transparent 70%);
-      opacity: 0.5;
-      bottom: -160px;
-      right: 10%;
-      animation: floatB 16s ease-in-out infinite;
-    }
-
-    @keyframes floatA {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%      { transform: translateX(-50%) translateY(40px); }
-    }
-
-    @keyframes floatB {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      50%      { transform: translateY(-50px) translateX(-30px); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 780px;
-    }
-
-    .wordmark {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--text);
-      margin-bottom: 56px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .wordmark .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 14px var(--shadow);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      padding: 7px 16px;
-      border: 1px solid var(--border);
+    .topbar .container { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+    .wordmark { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 10px; }
+    .wordmark .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px var(--shadow); }
+    .btn-sm {
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 9px 18px;
       border-radius: 999px;
-      margin-bottom: 28px;
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .eyebrow {
+      border: 1px solid var(--border);
       color: var(--accent-hi);
+      transition: background 0.2s, border-color 0.2s;
     }
+    .btn-sm:hover { background: rgba(201, 164, 92, 0.1); border-color: var(--accent); }
 
-    .eyebrow .pulse {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--shadow);
-      animation: pulse 2.4s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.35; }
-    }
-
+    /* ---------- Type ---------- */
+    h1, h2 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; font-weight: 500; letter-spacing: -0.015em; }
     h1 {
-      font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
-      font-size: clamp(2.5rem, 6vw, 4.1rem);
-      font-weight: 500;
-      line-height: 1.06;
-      letter-spacing: -0.015em;
+      font-size: clamp(2.4rem, 5.6vw, 3.9rem);
+      line-height: 1.05;
       background: linear-gradient(180deg, #fbf8f1 0%, #d8cdb6 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 24px;
     }
+    h2 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); line-height: 1.15; margin-bottom: 14px; }
+    h3 { font-size: 1.02rem; font-weight: 600; margin-bottom: 6px; }
 
-    .tagline {
-      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
-      color: var(--text-dim);
-      max-width: 600px;
-      margin: 0 auto 44px;
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent-hi);
+      padding: 7px 16px; border: 1px solid var(--border); border-radius: 999px;
+      background: rgba(255, 255, 255, 0.02);
+      margin-bottom: 28px;
     }
+    .eyebrow .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--shadow); animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-    /* ---------- Application form ---------- */
-    .apply-form {
-      max-width: 460px;
-      margin: 0 auto;
-      text-align: left;
+    .section-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .lede { font-size: 1.12rem; color: var(--text-dim); max-width: 640px; }
+    .section-intro { max-width: 700px; margin-bottom: 48px; }
+    .section-intro p { color: var(--text-dim); font-size: 1.02rem; }
+
+    section { padding: 92px 0; border-top: 1px solid var(--rule); scroll-margin-top: 62px; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      border-top: none;
+      padding: 108px 0 96px;
+      overflow: hidden;
+      text-align: center;
     }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 620px; height: 620px;
+      top: -220px; left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 164, 92, 0.34) 0%, transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
+      animation: float 14s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(40px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 { max-width: 880px; margin-left: auto; margin-right: auto; }
+    .hero .lede { margin: 0 auto 40px; }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #1a160c;
+      background: linear-gradient(135deg, var(--accent-hi), var(--accent));
+      border-radius: 12px;
+      box-shadow: 0 8px 24px var(--shadow);
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(201, 164, 92, 0.4); }
+    .btn-ghost {
+      display: inline-block;
+      padding: 15px 28px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); background: rgba(201, 164, 92, 0.07); }
+
+    /* ---------- Sample briefing ---------- */
+    .sample-label { display: block; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px; }
+
+    .brief {
+      max-width: 660px;
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 16px;
+      overflow: hidden;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .b-pad { padding: 22px 34px; }
+    .b-head { padding: 24px 34px 18px; border-bottom: 1px solid var(--paper-rule); font-size: 0.82rem; color: var(--ink-dim); }
+    .b-head .row { display: flex; gap: 12px; }
+    .b-head .row span:first-child { width: 56px; color: var(--ink-faint); flex-shrink: 0; }
+    .b-head .subject { color: var(--ink); font-weight: 600; }
+
+    .b-title { font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; font-weight: 500; margin: 4px 0 10px; }
+    .b-h { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); padding-bottom: 8px; margin-bottom: 12px; border-bottom: 1px solid var(--paper-rule); }
+
+    .b-list { list-style: none; }
+    .b-list li { position: relative; padding-left: 18px; margin-bottom: 9px; }
+    .b-list li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 5px; height: 5px; border-radius: 50%; background: var(--ink-faint); }
+    .b-list li.urgent::before { background: var(--deadline); }
+    .b-list li:last-child { margin-bottom: 0; }
+
+    .due {
+      display: inline-block;
+      font-size: 0.64rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--deadline); border: 1px solid rgba(155, 44, 31, 0.35); border-radius: 4px;
+      padding: 1px 6px; margin-right: 6px; vertical-align: 1px;
+    }
+    .src { font-size: 0.72rem; color: var(--ink-faint); white-space: nowrap; }
+    .src::before { content: "· "; }
+
+    .sched { display: grid; grid-template-columns: 70px 1fr; row-gap: 7px; }
+    .sched .t { font-weight: 600; }
+    .flag { margin-top: 12px; padding: 10px 14px; background: #f3eee2; border-left: 3px solid #b8893a; font-size: 0.88rem; color: var(--ink-dim); }
+
+    .prep-title { font-weight: 600; }
+    .prep-who { font-size: 0.86rem; color: var(--ink-dim); margin-bottom: 8px; }
+    .prep dl { display: grid; grid-template-columns: 80px 1fr; row-gap: 6px; column-gap: 12px; }
+    .prep dt { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); padding-top: 3px; }
+    .prep dd.angle { font-style: italic; }
+
+    .brief-notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; max-width: 900px; }
+    .brief-notes div { border-top: 1px solid var(--border); padding-top: 14px; }
+    .brief-notes strong { display: block; color: var(--accent-hi); font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+    .brief-notes p { color: var(--text-dim); font-size: 0.9rem; }
+
+    /* ---------- Generic lists and grids ---------- */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .items { list-style: none; }
+    .items li { padding: 18px 0; border-top: 1px solid var(--rule); }
+    .items li:first-child { border-top: none; padding-top: 0; }
+    .items p { color: var(--text-dim); font-size: 0.95rem; }
+    .items .opt { color: var(--text-faint); font-size: 0.82rem; }
+
+    .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
+    .proof div { border-top: 1px solid var(--border); padding-top: 16px; }
+    .proof .who { color: var(--accent); font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+    .proof p { color: var(--text-dim); font-size: 0.92rem; }
+
+    .promises { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 56px; }
+    .promises div { padding: 20px 0; border-top: 1px solid var(--rule); }
+    .promises p { color: var(--text-dim); font-size: 0.95rem; }
+    .leave { margin-top: 34px; font-size: 1.1rem; line-height: 1.55; max-width: 700px; }
+
+    .col-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .col-label.muted { color: var(--text-faint); }
+
+    /* ---------- Application ---------- */
+    .apply { text-align: center; }
+    .apply .section-intro { margin-left: auto; margin-right: auto; }
+    .apply-form { max-width: 460px; margin: 0 auto; text-align: left; }
     .apply-form .field { margin-bottom: 12px; }
-
-    .apply-form label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--text-dim);
-      margin-bottom: 7px;
-      letter-spacing: 0.01em;
-    }
-
-    .apply-form input,
-    .apply-form textarea {
+    .apply-form label { display: block; font-size: 0.8rem; font-weight: 500; color: var(--text-dim); margin-bottom: 7px; }
+    .apply-form input, .apply-form textarea {
       width: 100%;
       padding: 14px 16px;
       font-size: 1rem;
@@ -298,17 +351,8 @@
       transition: border-color 0.2s, box-shadow 0.2s;
       resize: vertical;
     }
-
-    .apply-form input::placeholder,
-    .apply-form textarea::placeholder { color: #6c6c7a; }
-
-    .apply-form input:focus,
-    .apply-form textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.22);
-    }
-
+    .apply-form input::placeholder, .apply-form textarea::placeholder { color: #6c6c7a; }
+    .apply-form input:focus, .apply-form textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.22); }
     .apply-form button {
       width: 100%;
       margin-top: 6px;
@@ -316,7 +360,6 @@
       font-size: 1rem;
       font-weight: 600;
       font-family: inherit;
-      letter-spacing: 0.01em;
       color: #1a160c;
       background: linear-gradient(135deg, var(--accent-hi), var(--accent));
       border: none;
@@ -325,253 +368,323 @@
       transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
       box-shadow: 0 8px 24px var(--shadow);
     }
-
     .apply-form button:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(201, 164, 92, 0.4); }
-    .apply-form button:active { transform: translateY(0); }
     .apply-form button:disabled { opacity: 0.6; cursor: default; }
-
-    .form-note {
-      margin-top: 16px;
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      min-height: 1.2em;
-      text-align: center;
-    }
+    .form-note { margin-top: 16px; font-size: 0.85rem; color: var(--text-dim); min-height: 1.2em; text-align: center; }
     .form-note.success { color: var(--accent-hi); }
     .form-note.error { color: #ff6b6b; }
 
-    /* ---------- How it works ---------- */
-    .section { padding: 100px 0 90px; position: relative; z-index: 1; }
-
-    .section-head { text-align: center; max-width: 620px; margin: 0 auto 56px; }
-
-    .section-head h2 {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: clamp(1.7rem, 4vw, 2.4rem);
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      margin-bottom: 14px;
-    }
-
-    .section-head p { color: var(--text-dim); font-size: 1.05rem; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .card {
-      padding: 32px 28px;
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(201, 164, 92, 0.4);
-    }
-
-    .step-num {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .card-icon {
-      width: 46px;
-      height: 46px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      background: rgba(201, 164, 92, 0.12);
-      border: 1px solid rgba(201, 164, 92, 0.18);
-      margin-bottom: 20px;
-    }
-
-    .card-icon svg { width: 24px; height: 24px; stroke: var(--accent); }
-
-    .card h3 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-
-    .card p { font-size: 0.95rem; color: var(--text-dim); }
-
-    /* ---------- Closing CTA ---------- */
-    .closing {
-      text-align: center;
-      padding: 20px 0 110px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .closing h2 {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      margin-bottom: 14px;
-    }
-
-    .closing p { color: var(--text-dim); margin-bottom: 28px; }
-
-    .closing a.btn {
-      display: inline-block;
-      padding: 15px 30px;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: #1a160c;
-      background: linear-gradient(135deg, var(--accent-hi), var(--accent));
-      border-radius: 12px;
-      box-shadow: 0 8px 24px var(--shadow);
-      transition: transform 0.15s, box-shadow 0.2s;
-    }
-
-    .closing a.btn:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(201, 164, 92, 0.4); }
-
-    /* ---------- Footer ---------- */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 0;
-      text-align: center;
-    }
-
-    footer p { font-size: 0.85rem; color: var(--text-dim); }
-
-    /* Custom emphasis, used sparingly — matches /how-it-works */
-    .accent { color: var(--accent-hi); }
-
-    /* h1 paints its text with a clipped gradient, which would swallow the colour
-       above — so the accent inside it sets its own fill. */
-    h1 .accent { -webkit-text-fill-color: var(--accent-hi); }
+    footer { border-top: 1px solid var(--rule); padding: 32px 0; text-align: center; }
+    footer p { font-size: 0.82rem; color: var(--text-faint); }
 
     /* ---------- Responsive ---------- */
-    @media (max-width: 720px) {
-      .section { padding: 70px 0 60px; }
-      .grid { grid-template-columns: 1fr; }
-      .wordmark { margin-bottom: 40px; }
+    @media (max-width: 860px) {
+      .brief-notes, .proof { grid-template-columns: 1fr; gap: 0; }
+      .brief-notes div, .proof div { padding-bottom: 16px; }
+      .split, .promises { grid-template-columns: 1fr; gap: 0; }
+    }
+
+    @media (max-width: 620px) {
+      section { padding: 66px 0; }
+      .hero { padding: 76px 0 66px; }
+      .container { padding: 0 20px; }
+      .b-pad { padding: 20px 22px; }
+      .b-head { padding: 20px 22px 16px; }
+      .prep dl { grid-template-columns: 1fr; row-gap: 2px; }
+      .prep dd { margin-bottom: 8px; }
+      h1 br { display: none; } /* let the headline wrap naturally on a phone */
+      .hero-actions { flex-direction: column; }
+      .hero-actions a { width: 100%; }
+      .btn-sm { padding: 8px 14px; }
     }
   </style>
 </head>
 <body>
 
-  <header class="hero" id="apply">
-    <div class="hero-content container">
-      <div class="wordmark"><span class="dot"></span>Founder Mode</div>
-
-      <span class="eyebrow"><span class="pulse"></span>Onboarding 10 founders this quarter</span>
-
-      <h1>A <span class="accent">custom</span> assistant agent,<br />built by hand for you.</h1>
-
-      <p class="tagline">Not another app to manage — a chief of staff we build, by hand, around how you actually run your company. <span class="accent">No two agents are alike</span>, and we take on 10 founders a quarter.</p>
-
-      <!--
-        ============================================================
-        FORMSPREE  —  configured: https://formspree.io/f/mbdvgvrv
-        Submissions land in the Formspree dashboard + your inbox.
-        To point at a different form, swap the action URL below.
-        ============================================================
-      -->
-      <form
-        id="apply-form"
-        class="apply-form"
-        action="https://formspree.io/f/mbdvgvrv"
-        method="POST"
-      >
-        <div class="field">
-          <label for="name">Your name</label>
-          <input type="text" id="name" name="name" placeholder="Jane Founder" required />
-        </div>
-
-        <div class="field">
-          <label for="email">Work email</label>
-          <input type="email" id="email" name="email" placeholder="you@company.com" required />
-        </div>
-
-        <div class="field">
-          <label for="company">Company</label>
-          <input type="text" id="company" name="company" placeholder="Acme Inc." required />
-        </div>
-
-        <div class="field">
-          <label for="pain">What's eating your time right now?</label>
-          <textarea id="pain" name="what_is_eating_your_time" rows="3" placeholder="The one thing you wish someone would take off your plate every morning…"></textarea>
-        </div>
-
-        <button type="submit" id="submit-btn">Request Access</button>
-      </form>
-
-      <p class="form-note" id="form-note">By application only. We reply personally to every founder.</p>
+  <header class="topbar">
+    <div class="container">
+      <a href="#top" class="wordmark"><span class="dot"></span>Founder Mode</a>
+      <a href="#apply" class="btn-sm">Request access</a>
     </div>
   </header>
 
-  <main>
-    <section class="section">
+  <main id="top">
+
+    <!-- ============ Hero ============ -->
+    <section class="hero">
       <div class="container">
-        <div class="section-head">
-          <h2>How it works</h2>
-          <p>This isn't software you set up. It's an assistant we build for you — and tune until it runs your mornings the way you would.</p>
-        </div>
-
-        <div class="grid">
-
-          <div class="card">
-            <div class="step-num">STEP 01</div>
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.3-4.3" />
-              </svg>
-            </div>
-            <h3>We learn how you work</h3>
-            <p>A focused onboarding to understand your calendar, your inbox, your team, and what a great morning actually looks like for you.</p>
-          </div>
-
-          <div class="card">
-            <div class="step-num">STEP 02</div>
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2v4" />
-                <path d="m6.34 6.34-.7-.7" />
-                <path d="M2 12h4" />
-                <path d="M14.5 9.5 21 3l-3 9-6.5 6.5a2.12 2.12 0 0 1-3-3z" />
-              </svg>
-            </div>
-            <h3>We build your custom agent</h3>
-            <p>We hand-build an assistant wired into your calendar, email, and tools — tuned to your priorities, your people, and your voice. Never a template.</p>
-          </div>
-
-          <div class="card">
-            <div class="step-num">STEP 03</div>
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3a6.36 6.36 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-              </svg>
-            </div>
-            <h3>It runs your mornings</h3>
-            <p>Every day starts with a briefing that's already triaged your inbox, decoded your calendar, and ranked what actually matters today.</p>
-          </div>
-
+        <span class="eyebrow"><span class="pulse"></span>Onboarding 10 founders this quarter</span>
+        <h1>A <span class="accent">custom</span> chief of staff,<br />built by hand for you.</h1>
+        <p class="lede">Overnight it reads your email and calendar, drafts the replies you owe, and hands you one short briefing. Not another app to manage — a service we build around how you actually run your company.</p>
+        <div class="hero-actions">
+          <a href="#briefing" class="btn-ghost">See a morning briefing</a>
+          <a href="#apply" class="btn">Request access</a>
         </div>
       </div>
     </section>
 
-    <section class="closing">
+    <!-- ============ The briefing ============ -->
+    <section id="briefing">
       <div class="container">
-        <h2>We only take a few founders at a time.</h2>
-        <p>Every agent is <span class="accent">built by hand, for one founder</span>, so we take on 10 a quarter and say no to the rest. If this is you, tell us about your day.</p>
-        <a href="#apply" class="btn">Request Access</a>
+        <div class="section-intro">
+          <div class="section-eyebrow">Your 7am</div>
+          <h2>This is what arrives</h2>
+          <p>One email, written to be read in three minutes, on a phone. It opens with what your agent already did, then gives you only what needs you.</p>
+        </div>
+
+        <span class="sample-label">Sample briefing &middot; people and companies are fictional</span>
+
+        <div class="brief">
+          <div class="b-head">
+            <div class="row"><span>From</span><span>Founder Mode</span></div>
+            <div class="row"><span>Subject</span><span class="subject">Founder Mode &mdash; Tuesday, October 6</span></div>
+          </div>
+
+          <div class="b-pad">
+            <div class="b-title">Good morning, Robert.</div>
+            <p>Four replies drafted while you slept &mdash; <b>Diane Park</b>, <b>Priya Raman</b>, <b>Marcus Chen</b> and <b>Jenna Morales</b> &mdash; plus a 90-minute hold on Wednesday. The one thing only you can do: approve <b>Sarah Lindqvist&rsquo;s</b> revised offer before it expires at <b>5:00 pm</b>.</p>
+          </div>
+
+          <div class="b-pad" style="padding-top:0;">
+            <div class="b-h">Today</div>
+            <ul class="b-list">
+              <li class="urgent"><span class="due">Due 5:00 pm</span>Approve the revised offer for <b>Sarah Lindqvist</b>, VP Sales. She holds a competing offer that expires today. <span class="src">Email</span></li>
+              <li>Send <b>Diane Park</b> the final Q3 bookings before <b>Thursday&rsquo;s</b> board pre-read. She is building the deck around them. Drafted. <span class="src">Email</span></li>
+              <li>Give <b>Marcus Chen</b> a decision on the Kestrel pilot by <b>Thursday</b>. His engineering team is on hold until then. <span class="src">Email</span></li>
+            </ul>
+          </div>
+
+          <div class="b-pad" style="padding-top:0;">
+            <div class="b-h">Schedule</div>
+            <div class="sched">
+              <span class="t">11:30</span><span>Brightwater Health &mdash; renewal review <span class="src">Calendar</span></span>
+              <span class="t">1:00</span><span>Lunch with Tom Whitfield, Alder Ridge Capital <span class="src">Calendar</span></span>
+            </div>
+            <div class="flag">The Brightwater invite has no agenda; your draft to Priya asks for one. The call ends at 12:30, which leaves 30 minutes to get to lunch.</div>
+          </div>
+
+          <div class="b-pad prep" style="padding-top:0;padding-bottom:30px;">
+            <div class="b-h">Meeting preparation</div>
+            <div class="prep-title">11:30 &nbsp;Brightwater Health &mdash; renewal review</div>
+            <div class="prep-who">Priya Raman, VP Operations &middot; Daniel Okafor, CFO (joined in August)</div>
+            <dl>
+              <dt>Context</dt>
+              <dd>Brightwater announced a $40M Series C on September 22 to open three regional sites. Priya asked about multi-year pricing on September 29 and has had no reply.</dd>
+              <dt>Objective</dt>
+              <dd>Move the renewal to a two-year term. Daniel now owns the budget, so frame the numbers for him.</dd>
+              <dt>Angle</dt>
+              <dd class="angle">Ask Daniel which of the three new sites opens first. It turns a renewal into an expansion plan, and a two-year term follows from it.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="brief-notes">
+          <div>
+            <strong>Work first, words second</strong>
+            <p>The opening line is what your agent already did. Then the single thing only you can do.</p>
+          </div>
+          <div>
+            <strong>Three actions, not thirty</strong>
+            <p>Ranked by who is waiting on you and what gets more costly with time. It does not repeat what you have passed on.</p>
+          </div>
+          <div>
+            <strong>Research, not a summary</strong>
+            <p>It reads up on the outside people in your meetings and gives you a question you would not have thought to ask.</p>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- ============ Overnight ============ -->
+    <section id="overnight">
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-eyebrow">Before you wake up</div>
+          <h2>It does the work before it reports it</h2>
+          <p>A list of what is waiting is just another inbox. Your agent handles what it can, then tells you what is left.</p>
+        </div>
+
+        <div class="split">
+          <ul class="items">
+            <li>
+              <h3>Drafts your replies</h3>
+              <p>For the people waiting on you, up to five each morning, written in your voice. They wait in your Drafts folder. Nothing is sent.</p>
+            </li>
+            <li>
+              <h3>Writes the follow-ups</h3>
+              <p>When someone has not answered you and it matters, it drafts the note that restarts the conversation.</p>
+            </li>
+          </ul>
+          <ul class="items">
+            <li>
+              <h3>Researches your meetings</h3>
+              <p>Outside attendees and their companies: funding, news, role changes, and where your last exchange ended.</p>
+            </li>
+            <li>
+              <h3>Protects your week</h3>
+              <p>Flags the meeting with no agenda and the day with no buffer, and holds the time you need to prepare.</p>
+              <p class="opt">Calendar changes only if you allow them.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Custom ============ -->
+    <section id="custom">
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-eyebrow">Built for you</div>
+          <h2>No two agents are alike</h2>
+          <p>We start with a conversation about your week, then build your agent around it: which days you are briefed, what it may leave out, who it drafts for, how it speaks. You correct it, and it stays corrected.</p>
+        </div>
+
+        <div class="proof">
+          <div>
+            <p class="who">A founder with a co-founder</p>
+            <p>His briefing leaves out every thread his COO already owns, so it only shows what reaches him.</p>
+          </div>
+          <div>
+            <p class="who">A deal-driven CEO</p>
+            <p>Hers opens with the chasers written overnight, because her day turns on who has gone quiet.</p>
+          </div>
+          <div>
+            <p class="who">A technical founder</p>
+            <p>His watches five repositories and reports shipped work only when it changes a customer answer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Privacy ============ -->
+    <section id="privacy">
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-eyebrow">Privacy</div>
+          <h2>Your inbox stays yours</h2>
+          <p>You are giving an AI agent access to your email. Here is what that means, in plain terms.</p>
+        </div>
+
+        <div class="promises">
+          <div>
+            <h3>We never see your password</h3>
+            <p>You approve access yourself, on your own screen, on a short call.</p>
+          </div>
+          <div>
+            <h3>It never sends email as you</h3>
+            <p>Replies wait in your Drafts folder. The only email it sends is your briefing, to you.</p>
+          </div>
+          <div>
+            <h3>Your email never trains AI</h3>
+            <p>Anthropic, which runs the AI, does not train on it and deletes it within 30 days.</p>
+          </div>
+          <div>
+            <h3>You can cut off access in one click</h3>
+            <p>From your Google or Microsoft account settings, at any time.</p>
+          </div>
+        </div>
+
+        <p class="leave">Leave whenever you like, and <span class="accent">we delete everything we hold</span>. Your mailbox, calendar and tasks stay exactly as they are. They were always yours.</p>
+      </div>
+    </section>
+
+    <!-- ============ Fit ============ -->
+    <section id="fit">
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-eyebrow">Fit</div>
+          <h2>Who this is for</h2>
+          <p>Each agent is built by hand, so we take on 10 founders a quarter and say no to the rest.</p>
+        </div>
+
+        <div class="split">
+          <div>
+            <div class="col-label">A good fit</div>
+            <ul class="items">
+              <li>
+                <h3>Your day runs on email and calendar</h3>
+                <p>What lands in your inbox and what sits on your calendar decides how your day goes.</p>
+              </li>
+              <li>
+                <h3>You will hand over real access</h3>
+                <p>The agent earns its keep by reading your actual mail, not a summary of it.</p>
+              </li>
+              <li>
+                <h3>You will say when it is wrong</h3>
+                <p>The first weeks are tuning. Your corrections are what make month six better than month one.</p>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="col-label muted">Not a fit</div>
+            <ul class="items">
+              <li>
+                <h3>Software you set up yourself</h3>
+                <p>There is no self-serve version, no free trial and no app to install.</p>
+              </li>
+              <li>
+                <h3>A tool for the whole team</h3>
+                <p>One agent serves one person. It is your chief of staff, not a shared inbox.</p>
+              </li>
+              <li>
+                <h3>Something you want running tomorrow</h3>
+                <p>We build it with you, test it privately, and tune it before it ever reaches your inbox.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Apply ============ -->
+    <section class="apply" id="apply">
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-eyebrow">By application</div>
+          <h2>Tell us about your mornings</h2>
+          <p>We reply personally to every founder. If we are a fit, the next step is a conversation about your week.</p>
+        </div>
+
+        <!--
+          ============================================================
+          FORMSPREE  —  configured: https://formspree.io/f/mbdvgvrv
+          Submissions land in the Formspree dashboard + your inbox.
+          To point at a different form, swap the action URL below.
+          ============================================================
+        -->
+        <form
+          id="apply-form"
+          class="apply-form"
+          action="https://formspree.io/f/mbdvgvrv"
+          method="POST"
+        >
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Founder" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Work email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required />
+          </div>
+
+          <div class="field">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Acme Inc." required />
+          </div>
+
+          <div class="field">
+            <label for="pain">What's eating your time right now?</label>
+            <textarea id="pain" name="what_is_eating_your_time" rows="3" placeholder="The one thing you wish someone would take off your plate every morning…"></textarea>
+          </div>
+
+          <button type="submit" id="submit-btn">Request Access</button>
+        </form>
+
+        <p class="form-note" id="form-note">By application only. We reply personally to every founder.</p>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -595,7 +708,6 @@
 
         e.preventDefault();
         var data = new FormData(form);
-
         btn.disabled = true;
         btn.textContent = 'Sending…';
         note.className = 'form-note';
@@ -631,5 +743,6 @@
       });
     })();
   </script>
+
 </body>
 </html>
