@@ -447,6 +447,13 @@
 
     footer p { font-size: 0.85rem; color: var(--text-dim); }
 
+    /* Custom emphasis, used sparingly — matches /how-it-works */
+    .accent { color: var(--accent-hi); }
+
+    /* h1 paints its text with a clipped gradient, which would swallow the colour
+       above — so the accent inside it sets its own fill. */
+    h1 .accent { -webkit-text-fill-color: var(--accent-hi); }
+
     /* ---------- Responsive ---------- */
     @media (max-width: 720px) {
       .section { padding: 70px 0 60px; }
@@ -463,9 +470,9 @@
 
       <span class="eyebrow"><span class="pulse"></span>Onboarding 10 founders this quarter</span>
 
-      <h1>A personal assistant agent,<br />built for you.</h1>
+      <h1>A <span class="accent">custom</span> assistant agent,<br />built by hand for you.</h1>
 
-      <p class="tagline">Not another app to manage — a chief of staff we craft, by hand, around how you actually run your company. We take a few founders at a time.</p>
+      <p class="tagline">Not another app to manage — a chief of staff we build, by hand, around how you actually run your company. <span class="accent">No two agents are alike</span>, and we take on 10 founders a quarter.</p>
 
       <!--
         ============================================================
@@ -539,8 +546,8 @@
                 <path d="M14.5 9.5 21 3l-3 9-6.5 6.5a2.12 2.12 0 0 1-3-3z" />
               </svg>
             </div>
-            <h3>We build your agent</h3>
-            <p>We hand-craft a personal assistant agent wired into your calendar, email, and tools — tuned to your priorities, not a generic template.</p>
+            <h3>We build your custom agent</h3>
+            <p>We hand-build an assistant wired into your calendar, email, and tools — tuned to your priorities, your people, and your voice. Never a template.</p>
           </div>
 
           <div class="card">
@@ -561,7 +568,7 @@
     <section class="closing">
       <div class="container">
         <h2>We only take a few founders at a time.</h2>
-        <p>Because every agent is built by hand, spots are limited. If that's you, tell us about your day.</p>
+        <p>Every agent is <span class="accent">built by hand, for one founder</span>, so we take on 10 a quarter and say no to the rest. If this is you, tell us about your day.</p>
         <a href="#apply" class="btn">Request Access</a>
       </div>
     </section>

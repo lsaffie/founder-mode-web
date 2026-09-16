@@ -447,6 +447,48 @@
     footer { border-top: 1px solid var(--rule); padding: 36px 0; }
     footer p { font-size: 0.82rem; color: var(--text-faint); }
 
+    /* ---------- Custom emphasis, used sparingly ---------- */
+    .accent { color: var(--accent-hi); }
+
+    /* Shown only when the link carries ?for=<name> */
+    .prepared {
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 26px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--rule);
+      max-width: 520px;
+    }
+
+    .aside {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      max-width: 720px;
+    }
+
+    /* Three one-line examples of what we changed for a founder */
+    .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
+    .proof div { border-top: 1px solid var(--border); padding-top: 16px; }
+    .proof p { color: var(--text-dim); font-size: 0.92rem; }
+    .proof .who { color: var(--accent); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+
+    /* Privacy promises, before the questions */
+    .promises { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 64px; }
+    .promises div { padding: 22px 0; border-top: 1px solid var(--rule); }
+    .promises p { color: var(--text-dim); font-size: 0.95rem; }
+    .leave {
+      margin: 36px 0 8px;
+      font-size: 1.15rem;
+      line-height: 1.55;
+      color: var(--text);
+      max-width: 720px;
+    }
+
     /* ---------- Responsive ---------- */
     @media (max-width: 1000px) {
       .topnav { display: none; }
@@ -474,7 +516,9 @@
       .container { padding: 0 20px; }
       section { padding: 72px 0; }
       .hero { padding: 64px 0 56px; }
-      .pillars, .split, .settings, .tiers, .steps, .qa { grid-template-columns: 1fr; }
+      .pillars, .split, .settings, .tiers, .steps, .qa, .promises, .proof { grid-template-columns: 1fr; }
+      .proof { gap: 0; margin-top: 36px; }
+      .proof div { padding-bottom: 18px; }
       .pillar, .pillar + .pillar { padding: 20px 0; border-left: none; border-top: 1px solid var(--rule); }
       .pillar:first-child { border-top: none; }
       .split { gap: 40px; }
@@ -494,15 +538,15 @@
     <div class="container">
       <a href="/" class="wordmark"><span class="dot"></span>Founder Mode</a>
       <nav class="topnav" aria-label="Sections">
+        <a href="#service">Service</a>
+        <a href="#included">Included</a>
         <a href="#briefing">Briefing</a>
         <a href="#overnight">Overnight</a>
         <a href="#replies">Replies</a>
-        <a href="#tailored">Tailored</a>
-        <a href="#tools">Tools</a>
+        <a href="#custom">Custom</a>
         <a href="#control">Control</a>
-        <a href="#data">Data</a>
-        <a href="#service">Service</a>
-        <a href="#included">Included</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#fit">Fit</a>
       </nav>
     </div>
   </header>
@@ -512,9 +556,10 @@
     <!-- ============ Overview ============ -->
     <section class="hero">
       <div class="container">
+        <p class="prepared" id="prepared" hidden></p>
         <div class="eyebrow">How it works</div>
-        <h1>An AI agent for your inbox and calendar, built around how you work.</h1>
-        <p class="lede">Every morning it reads your email and calendar, does the work it can, and gives you a short briefing with the rest. We build it with you, tune it to your week, and review it with you every month.</p>
+        <h1>A <span class="accent">custom</span> AI agent for your inbox and calendar.</h1>
+        <p class="lede">Every morning it reads your email and calendar, does the work it can, and gives you a short briefing with the rest. We build it by hand around your week, and review it with you every month. We take on <strong>10 founders a quarter</strong>, because each agent is built this way.</p>
 
         <div class="pillars">
           <div class="pillar">
@@ -522,22 +567,116 @@
             <p>It works inside the email and calendar you already use. The briefing arrives as an email.</p>
           </div>
           <div class="pillar">
-            <h3>Built with you</h3>
-            <p>Configured to your days, your priorities, your companies and your voice.</p>
+            <h3>Built for you alone</h3>
+            <p>Your days, your priorities, your companies, your voice. <span class="accent">No two agents are alike.</span></p>
           </div>
           <div class="pillar">
-            <h3>You stay in control</h3>
-            <p>You decide what it may read, what it may draft and what it may change.</p>
+            <h3>Private by design</h3>
+            <p>You decide what it may read, draft and change. Leave whenever you like, and we delete everything we hold.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ 01 The briefing ============ -->
+    <!-- ============ 01 Service ============ -->
+    <section id="service">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">01 &nbsp;The service</div>
+          <h2>A <span class="accent">custom</span> service, not software</h2>
+          <p>You do not set this up. We build your agent by hand around your week, check it before it reaches you, and keep it accurate as your work changes. We take on <strong>10 founders a quarter</strong>, because each agent is built this way.</p>
+        </div>
+
+        <ol class="timeline">
+          <li>
+            <div class="when">Discovery</div>
+            <div>
+              <h3>A conversation about your week</h3>
+              <p>How your days run, who matters, what you want off your plate, and what the briefing should leave out.</p>
+            </div>
+          </li>
+          <li>
+            <div class="when">Connection</div>
+            <div>
+              <h3>Fifteen minutes, together</h3>
+              <p>You connect your accounts on a call. You approve every permission yourself.</p>
+            </div>
+          </li>
+          <li>
+            <div class="when">Private test runs</div>
+            <div>
+              <h3>Checked before it reaches you</h3>
+              <p>We run the agent on your real data with nothing sent, drafted or changed, and review the output before your first briefing.</p>
+            </div>
+          </li>
+          <li>
+            <div class="when">First weeks</div>
+            <div>
+              <h3>Tuned to your standard</h3>
+              <p>We adjust it from your replies and our own review until it reads the way you would want a chief of staff to write.</p>
+            </div>
+          </li>
+          <li>
+            <div class="when">Every month</div>
+            <div>
+              <h3>A review call</h3>
+              <p>What is working, what to change, and whether the agent is still doing what you need.</p>
+            </div>
+          </li>
+          <li>
+            <div class="when">As you grow</div>
+            <div>
+              <h3>New connections and new agents</h3>
+              <p>When you want it to reach another system or take on new work, we scope it with you as a custom project.</p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="aside">No self-serve version, no free trial, by application only. The person who builds your agent is the person you meet on the monthly call.</p>
+      </div>
+    </section>
+
+        <!-- ============ 02 Included ============ -->
+    <section id="included" class="included">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">02 &nbsp;What you get</div>
+          <h2>What is included, and what is custom</h2>
+          <p>Your agent connects to the tools you already use. When your work depends on another system, we build that connection for you.</p>
+        </div>
+
+        <div class="tiers">
+          <div class="tier">
+            <div class="tier-label">Included</div>
+            <ul>
+              <li>A daily briefing<span>On the days you choose, written to your instructions</span></li>
+              <li>Email and calendar<span>Google Workspace or Microsoft 365</span></li>
+              <li>Notion<span>Tasks and reference databases</span></li>
+              <li>GitHub<span>The repositories you choose</span></li>
+              <li>Web research<span>For your meetings and the companies in your inbox</span></li>
+              <li>Drafted replies and follow-ups<span>Up to five each morning, in your voice, never sent</span></li>
+              <li>Onboarding and tuning<span>Built with you, then corrected until it reads right</span></li>
+              <li>A monthly review call<span>With the person who builds your agent</span></li>
+            </ul>
+            <p class="note">Microsoft 365 accounts may need approval from your IT administrator.</p>
+          </div>
+          <div class="tier muted">
+            <div class="tier-label">Custom work, quoted separately</div>
+            <ul>
+              <li>Other business systems<span>For example CRM, team chat, finance and reporting tools</span></li>
+              <li>New use cases<span>Agents for other parts of your work, beyond the morning briefing</span></li>
+            </ul>
+            <p class="note">We scope each one with you, and agree the cost before any work starts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- ============ 03 The briefing ============ -->
     <section id="briefing">
       <div class="container">
         <div class="section-intro">
-          <div class="eyebrow">01 &nbsp;The briefing</div>
+          <div class="eyebrow">03 &nbsp;The briefing</div>
           <h2>What arrives each morning</h2>
           <p>Written to be read in three minutes, on a phone. It leads with what is already done, then gives you only what needs you.</p>
         </div>
@@ -693,11 +832,11 @@
       </div>
     </section>
 
-    <!-- ============ 02 Overnight ============ -->
+    <!-- ============ 04 Overnight ============ -->
     <section id="overnight">
       <div class="container">
         <div class="section-intro">
-          <div class="eyebrow">02 &nbsp;Before you wake up</div>
+          <div class="eyebrow">04 &nbsp;Before you wake up</div>
           <h2>It does the work before it reports it</h2>
           <p>A list of what is waiting is just another inbox. The agent handles what it can, then tells you what is left.</p>
         </div>
@@ -745,11 +884,11 @@
       </div>
     </section>
 
-    <!-- ============ 03 Replies ============ -->
+    <!-- ============ 05 Replies ============ -->
     <section id="replies">
       <div class="container">
         <div class="section-intro">
-          <div class="eyebrow">03 &nbsp;Talk back</div>
+          <div class="eyebrow">05 &nbsp;Talk back</div>
           <h2>Reply to it as you would to a person</h2>
           <p>Answer the briefing email. The agent reads your reply, acts on it, and responds. At the latest, the answer is in your next morning&rsquo;s briefing.</p>
         </div>
@@ -803,13 +942,13 @@
       </div>
     </section>
 
-    <!-- ============ 04 Tailored ============ -->
-    <section id="tailored">
+    <!-- ============ 06 Custom ============ -->
+    <section id="custom">
       <div class="container">
         <div class="section-intro">
-          <div class="eyebrow">04 &nbsp;Tailored to you</div>
-          <h2>Configured around how you work</h2>
-          <p>Every agent starts with a conversation about your week. These are the settings we tune together. Any of them can change when your work does.</p>
+          <div class="eyebrow">06 &nbsp;Built for you</div>
+          <h2>No two agents are alike</h2>
+          <p>Every agent starts with a conversation about your week, and is <span class="accent">built for you alone</span>. These are the settings we tune together. Any of them can change when your work does.</p>
         </div>
 
         <div class="settings">
@@ -857,46 +996,29 @@
             <p>Topics, senders and threads you never want to see again. Stated once, applied every day after.</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ============ 05 Tools ============ -->
-    <section id="tools">
-      <div class="container">
-        <div class="section-intro">
-          <div class="eyebrow">05 &nbsp;Your tools</div>
-          <h2>Works with the tools you already use</h2>
-          <p>The standard agent connects to your email and calendar, your task list and your code. When your work depends on other systems, we build those connections for you.</p>
-        </div>
-
-        <div class="tiers">
-          <div class="tier">
-            <div class="tier-label">Included</div>
-            <ul>
-              <li>Email and calendar<span>Google Workspace or Microsoft 365</span></li>
-              <li>Notion<span>Tasks and reference databases</span></li>
-              <li>GitHub<span>The repositories you choose</span></li>
-              <li>Web research<span>For your meetings and the companies in your inbox</span></li>
-            </ul>
-            <p class="note">Microsoft 365 accounts may need approval from your IT administrator.</p>
+        <div class="proof">
+          <div>
+            <p class="who">A founder with a co-founder</p>
+            <p>His briefing leaves out every thread his COO already owns, so it only shows what reaches him.</p>
           </div>
-          <div class="tier muted">
-            <div class="tier-label">Custom, quoted separately</div>
-            <ul>
-              <li>Other business systems<span>For example CRM, team chat, finance and reporting tools</span></li>
-              <li>New use cases<span>Agents for other parts of your work, beyond the morning briefing</span></li>
-            </ul>
-            <p class="note">We scope each one with you, and agree the cost before any work starts.</p>
+          <div>
+            <p class="who">A deal-driven CEO</p>
+            <p>Hers opens with the chasers written overnight, because her day turns on who has gone quiet.</p>
+          </div>
+          <div>
+            <p class="who">A technical founder</p>
+            <p>His watches five repositories and reports shipped work only when it changes a customer answer.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ 06 Control ============ -->
+    <!-- ============ 07 Control ============ -->
     <section id="control">
       <div class="container">
         <div class="section-intro">
-          <div class="eyebrow">06 &nbsp;Control</div>
+          <div class="eyebrow">07 &nbsp;Control</div>
           <h2>It earns access one step at a time</h2>
           <p>The agent only has the abilities you have switched on. Anything you have not switched on, it cannot do.</p>
         </div>
@@ -922,37 +1044,48 @@
       </div>
     </section>
 
-    <!-- ============ 07 Data ============ -->
-    <section id="data">
+        <!-- ============ 08 Privacy ============ -->
+    <section id="privacy">
       <div class="container">
         <div class="section-intro">
-          <div class="eyebrow">07 &nbsp;Your data</div>
-          <h2>Your data, in plain terms</h2>
-          <p>You are giving an AI agent access to your inbox. Here is exactly what that means.</p>
+          <div class="eyebrow">08 &nbsp;Privacy</div>
+          <h2>Your inbox stays yours</h2>
+          <p>You are giving an AI agent access to your email. Here is what that means, in plain terms.</p>
         </div>
+
+        <div class="promises">
+          <div>
+            <h3>We never see your password</h3>
+            <p>You approve access yourself, on your own screen, on a short call.</p>
+          </div>
+          <div>
+            <h3>It never sends email as you</h3>
+            <p>Replies wait in your Drafts folder. The only email it sends is your briefing, to you.</p>
+          </div>
+          <div>
+            <h3>Your email never trains AI</h3>
+            <p>Anthropic, which runs the AI, does not train on it and deletes it within 30 days.</p>
+          </div>
+          <div>
+            <h3>You can cut off access in one click</h3>
+            <p>From your Google or Microsoft account settings, at any time.</p>
+          </div>
+        </div>
+
+        <p class="leave">Leave whenever you like, and <span class="accent">we delete everything we hold</span>. Your mailbox, calendar and tasks stay exactly as they are. They were always yours.</p>
 
         <div class="qa">
           <div>
-            <h3>Who connects to my account?</h3>
-            <p>You do. On a short call, you approve Founder Mode&rsquo;s access on your own screen. We never see or store your password.</p>
-            <p>You can remove access at any time from your Google or Microsoft account settings.</p>
-          </div>
-          <div>
             <h3>How much access does it have?</h3>
             <p>To draft replies and deliver your briefing, the agent needs full access to your mailbox. We say so plainly.</p>
-            <p>It never sends email as you. The only email it sends is your briefing, to you.</p>
-          </div>
-          <div>
-            <h3>Is my data used to train AI?</h3>
-            <p>No. The agent runs on Claude, through Anthropic&rsquo;s commercial service. Anthropic does not train its models on this data, and deletes it within 30 days.</p>
           </div>
           <div>
             <h3>Who reads my briefings?</h3>
-            <p>You, and your Founder Mode lead, who reviews them to tune your agent. No one else.</p>
+            <p>You, and the person who builds your agent, who reads them to tune it. No one else.</p>
           </div>
           <div>
-            <h3>What does it keep?</h3>
-            <p>A short working memory: your last five briefings, what you have told it, and the follow-ups it is tracking. It is stored encrypted and never shared.</p>
+            <h3>What does it keep while you are a client?</h3>
+            <p>A short working memory: your recent briefings, what you have told it, and the follow-ups it is tracking. It is stored encrypted and never shared.</p>
           </div>
           <div>
             <h3>What leaves my account?</h3>
@@ -968,88 +1101,48 @@
       </div>
     </section>
 
-    <!-- ============ 08 Service ============ -->
-    <section id="service">
+    <!-- ============ 09 Fit ============ -->
+    <section id="fit">
       <div class="container">
         <div class="section-intro">
-          <div class="eyebrow">08 &nbsp;Working together</div>
-          <h2>A service, not software</h2>
-          <p>You do not set this up. We build it with you, check it before it reaches you, and keep it accurate as your work changes.</p>
+          <div class="eyebrow">09 &nbsp;Fit</div>
+          <h2>Who this is for</h2>
+          <p>We take a few founders at a time, so we are careful about who we take.</p>
         </div>
 
-        <ol class="timeline">
-          <li>
-            <div class="when">Discovery</div>
-            <div>
-              <h3>A conversation about your week</h3>
-              <p>How your days run, who matters, what you want off your plate, and what the briefing should leave out.</p>
-            </div>
-          </li>
-          <li>
-            <div class="when">Connection</div>
-            <div>
-              <h3>Fifteen minutes, together</h3>
-              <p>You connect your accounts on a call. You approve every permission yourself.</p>
-            </div>
-          </li>
-          <li>
-            <div class="when">Private test runs</div>
-            <div>
-              <h3>Checked before it reaches you</h3>
-              <p>We run the agent on your real data with nothing sent, drafted or changed, and review the output before your first briefing.</p>
-            </div>
-          </li>
-          <li>
-            <div class="when">First weeks</div>
-            <div>
-              <h3>Tuned to your standard</h3>
-              <p>We adjust it from your replies and our own review until it reads the way you would want a chief of staff to write.</p>
-            </div>
-          </li>
-          <li>
-            <div class="when">Every month</div>
-            <div>
-              <h3>A review call</h3>
-              <p>What is working, what to change, and whether the agent is still doing what you need.</p>
-            </div>
-          </li>
-          <li>
-            <div class="when">As you grow</div>
-            <div>
-              <h3>New connections and new agents</h3>
-              <p>When you want it to reach another system or take on new work, we scope it with you as a custom project.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============ 09 Included ============ -->
-    <section id="included" class="included">
-      <div class="container">
-        <div class="section-intro">
-          <div class="eyebrow">09 &nbsp;What is included</div>
-          <h2>What you get</h2>
-        </div>
-
-        <div class="tiers">
-          <div class="tier">
-            <div class="tier-label">Included</div>
-            <ul>
-              <li>A daily briefing on the days you choose</li>
-              <li>Email and calendar, Notion and GitHub</li>
-              <li>Drafted replies and follow-ups</li>
-              <li>Meeting research and a look ahead at your week</li>
-              <li>Replying to the briefing to direct the agent</li>
-              <li>Onboarding, setup and tuning</li>
-              <li>A monthly review call</li>
+        <div class="split">
+          <div>
+            <div class="tier-label">A good fit</div>
+            <ul class="items">
+              <li>
+                <h3>Your day runs on email and calendar</h3>
+                <p>What lands in your inbox and what sits on your calendar decides how your day goes.</p>
+              </li>
+              <li>
+                <h3>You will hand over real access</h3>
+                <p>The agent earns its keep by reading your actual mail, not a summary of it.</p>
+              </li>
+              <li>
+                <h3>You will say when it is wrong</h3>
+                <p>The first weeks are tuning. Your corrections are what make month six better than month one.</p>
+              </li>
             </ul>
           </div>
-          <div class="tier muted">
-            <div class="tier-label">Custom work, quoted separately</div>
-            <ul>
-              <li>Connections to other business systems</li>
-              <li>New agents and use cases beyond the briefing</li>
+          <div>
+            <div class="tier-label">Not a fit</div>
+            <ul class="items">
+              <li>
+                <h3>Software you set up yourself</h3>
+                <p>There is no self-serve version, no free trial and no app to install.</p>
+              </li>
+              <li>
+                <h3>A tool for the whole team</h3>
+                <p>One agent serves one person. It is your chief of staff, not a shared inbox.</p>
+              </li>
+              <li>
+                <h3>Everyone who applies</h3>
+                <p>We take on 10 founders a quarter and say no to the rest, because each agent is built by hand.</p>
+              </li>
             </ul>
           </div>
         </div>
@@ -1063,6 +1156,19 @@
       <p>&copy; 2026 Founder Mode</p>
     </div>
   </footer>
+
+  <script>
+    // The link you send carries the reader's name: /how-it-works?for=Jane%20Chen
+    // Anything that isn't a plain name is ignored, and the line stays hidden.
+    (function () {
+      var raw = (new URLSearchParams(location.search).get('for') || '').trim();
+      if (!/^[A-Za-zÀ-ÖØ-öø-ÿ'’. -]{2,40}$/.test(raw)) return;
+      var el = document.getElementById('prepared');
+      el.textContent = 'Prepared for ' + raw + ' · ' +
+        new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+      el.hidden = false;
+    })();
+  </script>
 
 </body>
 </html>
